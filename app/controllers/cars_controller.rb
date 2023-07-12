@@ -11,9 +11,9 @@ class CarsController < ApplicationController
   end
 
   # GET /cars/new
-  def new
-    @car = Car.new
-  end
+  # def new
+  #   @car = Car.new
+  # end
 
   # GET /cars/1/edit
   def edit
