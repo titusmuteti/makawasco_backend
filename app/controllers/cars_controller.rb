@@ -48,14 +48,14 @@ class CarsController < ApplicationController
   end
 
   # DELETE /cars/1 or /cars/1.json
-  def destroy
-    @car.destroy
+  # def destroy
+  #   @car.destroy
 
-    respond_to do |format|
-      format.html { redirect_to cars_url, notice: "Car was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to cars_url, notice: "Car was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
