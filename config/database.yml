@@ -84,6 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: makawasco_backend_production
-  username: makawasco_backend
-  password: <%= ENV["MAKAWASCO_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV["MY_APP_DATABASE_URL"] %>
