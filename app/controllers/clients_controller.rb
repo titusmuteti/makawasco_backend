@@ -6,37 +6,37 @@ class ClientsController < ApplicationController
     @clients = Client.all
   end
 
-  # GET /clients/1 or /clients/1.json
-  def show
-  end
+  # # GET /clients/1 or /clients/1.json
+  # def show
+  # end
 
-  # GET /clients/1/edit
-  def edit
-  end
+  # # GET /clients/1/edit
+  # def edit
+  # end
 
-  # POST /clients or /clients.json
-  def create
+  # # POST /clients or /clients.json
+  # def create
     
-  end
+  # end
 
-  # PATCH/PUT /clients/1 or /clients/1.json
-  def update
+  # # PATCH/PUT /clients/1 or /clients/1.json
+  # def update
 
-  end
+  # end
 
-  # DELETE /clients/1 or /clients/1.json
-  def destroy
+  # # DELETE /clients/1 or /clients/1.json
+  # def destroy
    
-  end
+  # end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client
-      @client = Client.find(params[:id])
-    end
+  # private
+  #   # Use callbacks to share common setup or constraints between actions.
+  #   def set_client
+  #     @client = Client.find(params[:id])
+  #   end
 
-    # Only allow a list of trusted parameters through.
-    def client_params
-      params.require(:client).permit(:first_name, :last_name, :email, :phone_number, :password_digest, :confirm_password, :employee_id)
-    end
+  #   # Only allow a list of trusted parameters through.
+  #   def client_params
+  #     params.require(:client).permit(:first_name, :last_name, :email, :phone_number, :password_digest, :confirm_password, :employee_id)
+  #   end
 end
