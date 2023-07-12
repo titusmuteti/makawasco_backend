@@ -1,43 +1,64 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: %i[ show edit update destroy ]
+  rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
-  # GET /clients or /clients.json
   def index
-    @clients = Client.all
-    render json: @clients
+    clients = Client.all
+    render json: clients, include: [:employees], status: :ok
   end
 
-  # # GET /clients/1 or /clients/1.json
-  # def show
-  # end
+  def show
+    client = Client.find_by_id(id: session[:client_id])
+    if client
+      # byebug
+      render json: client, include: [:employees], status: :ok
+    else
+      render json: { error: "You must be logged in to access this content" }, status: :unauthorized
+    end
+  end
 
-  # # GET /clients/1/edit
-  # def edit
-  # end
-
-  # # POST /clients or /clients.json
-  # def create
+  def create
+    client = Client.new(client_params)
     
-  # end
+    if client.save
+      # byebug
+      session[:client_id] = client.id
+      render json: client, status: :created
+    else
+      render json: { error: client.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
 
-  # # PATCH/PUT /clients/1 or /clients/1.json
   # def update
-
+  #   client = Client.find_by_id(params[:id])
+  #   if client
+  #     if client.update(client_params)
+  #       render json: client, status: :ok
+  #     else
+  #       render json: { errors: client.errors.full_messages }, status: :unprocessable_entity
+  #     end
+  #   else
+  #     render json: { error: "Client not found" }, status: :not_found
+  #   end
   # end
 
-  # # DELETE /clients/1 or /clients/1.json
-  # def destroy
-   
-  # end
+  def destroy
+    client = Client.find_by_id(params[:id])
+    if client
+      client.destroy
+      render json: { message: "Client deleted" }, status: :ok
+    else
+      render json: { error: "Client not found" }, status: :not_found
+    end
+  end
 
-  # private
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_client
-  #     @client = Client.find(params[:id])
-  #   end
+  private
 
-  #   # Only allow a list of trusted parameters through.
-  #   def client_params
-  #     params.require(:client).permit(:first_name, :last_name, :email, :phone_number, :password_digest, :confirm_password, :employee_id)
-  #   end
+  def client_params
+    params.permit(:email, :first_name, :last_name, :phone_number, :password, :confirm_password)
+  end
+
+  def record_invalid
+    render json: {error: "Invalid user"}, status: :unprocessable_entity
+  end
+
 end
