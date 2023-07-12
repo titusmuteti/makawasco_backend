@@ -20,31 +20,31 @@ class CarsController < ApplicationController
   end
 
   # POST /cars or /cars.json
-  def create
-    @car = Car.new(car_params)
+  # def create
+  #   @car = Car.new(car_params)
 
-    respond_to do |format|
-      if @car.save
-        format.html { redirect_to car_url(@car), notice: "Car was successfully created." }
-        format.json { render :show, status: :created, location: @car }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @car.save
+  #       format.html { redirect_to car_url(@car), notice: "Car was successfully created." }
+  #       format.json { render :show, status: :created, location: @car }
+  #     else
+  #       format.html { render :new, status: :unprocessable_entity }
+  #       format.json { render json: @car.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /cars/1 or /cars/1.json
-  def update
-    respond_to do |format|
-      if @car.update(car_params)
-        format.html { redirect_to car_url(@car), notice: "Car was successfully updated." }
-        format.json { render :show, status: :ok, location: @car }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
-    end
+  # def update
+  #   respond_to do |format|
+  #     if @car.update(car_params)
+  #       format.html { redirect_to car_url(@car), notice: "Car was successfully updated." }
+  #       format.json { render :show, status: :ok, location: @car }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @car.errors, status: :unprocessable_entity }
+  #     end
+  #   end
   end
 
   # DELETE /cars/1 or /cars/1.json
