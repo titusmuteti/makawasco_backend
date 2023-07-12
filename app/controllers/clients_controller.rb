@@ -1,64 +1,70 @@
 class ClientsController < ApplicationController
-  rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+  before_action :set_client, only: %i[ show edit update destroy ]
 
+  # GET /clients or /clients.json
   def index
-    clients = Client.all
-    render json: clients, include: [:employees], status: :ok
+    @clients = Client.all
   end
 
+  # GET /clients/1 or /clients/1.json
   def show
-    client = Client.find_by_id(id: session[:client_id])
-    if client
-      # byebug
-      render json: client, include: [:employees], status: :ok
-    else
-      render json: { error: "You must be logged in to access this content" }, status: :unauthorized
-    end
   end
 
+  # GET /clients/new
+  def new
+    @client = Client.new
+  end
+
+  # GET /clients/1/edit
+  def edit
+  end
+
+  # POST /clients or /clients.json
   def create
-    client = Client.new(client_params)
-    
-    if client.save
-      # byebug
-      session[:client_id] = client.id
-      render json: client, status: :created
-    else
-      render json: { error: client.errors.full_messages }, status: :unprocessable_entity
+    @client = Client.new(client_params)
+
+    respond_to do |format|
+      if @client.save
+        format.html { redirect_to client_url(@client), notice: "Client was successfully created." }
+        format.json { render :show, status: :created, location: @client }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  # def update
-  #   client = Client.find_by_id(params[:id])
-  #   if client
-  #     if client.update(client_params)
-  #       render json: client, status: :ok
-  #     else
-  #       render json: { errors: client.errors.full_messages }, status: :unprocessable_entity
-  #     end
-  #   else
-  #     render json: { error: "Client not found" }, status: :not_found
-  #   end
-  # end
+  # PATCH/PUT /clients/1 or /clients/1.json
+  def update
+    respond_to do |format|
+      if @client.update(client_params)
+        format.html { redirect_to client_url(@client), notice: "Client was successfully updated." }
+        format.json { render :show, status: :ok, location: @client }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
+  # DELETE /clients/1 or /clients/1.json
   def destroy
-    client = Client.find_by_id(params[:id])
-    if client
-      client.destroy
-      render json: { message: "Client deleted" }, status: :ok
-    else
-      render json: { error: "Client not found" }, status: :not_found
+    @client.destroy
+
+    respond_to do |format|
+      format.html { redirect_to clients_url, notice: "Client was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_client
+      @client = Client.find(params[:id])
+    end
 
-  def client_params
-    params.permit(:email, :first_name, :last_name, :phone_number, :password, :confirm_password)
-  end
-
-  def record_invalid
-    render json: {error: "Invalid user"}, status: :unprocessable_entity
-  end
-
+    # Only allow a list of trusted parameters through.
+    def client_params
+      params.require(:client).permit(:first_name, :last_name, :email, :phone_number, :password_digest, :confirm_password, :employee_id)
+    end
 end
