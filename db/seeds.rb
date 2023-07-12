@@ -16,6 +16,13 @@
 #   password: 'LBzpIg1GcyH9MtmPPAZ0WySjIbwq2b23'
 # )
 
+require 'active_record'
+
+# Replace the values with the actual connection details provided by Render
+database_url = 'postgres://backend_xxd8_user:LBzpIg1GcyH9MtmPPAZ0WySjIbwq2b23@dpg-cin43vlph6evlaqpallg-a.oregon-postgres.render.com/backend_xxd8'
+
+ActiveRecord::Base.establish_connection(database_url)
+
 
 
 Client.create(first_name: "John", last_name: "dave",)
