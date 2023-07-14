@@ -4,9 +4,9 @@ require 'faker'
 puts "🌱 Seeding..."
 
 # Replace the values with the actual connection details provided by Render
-database_url = 'postgres://backend_xxd8_user:LBzpIg1GcyH9MtmPPAZ0WySjIbwq2b23@dpg-cin43vlph6evlaqpallg-a.oregon-postgres.render.com/backend_xxd8'
+  database_url = 'postgres://backend_xxd8_user:LBzpIg1GcyH9MtmPPAZ0WySjIbwq2b23@dpg-cin43vlph6evlaqpallg-a.oregon-postgres.render.com/backend_xxd8'
 
-ActiveRecord::Base.establish_connection(database_url)
+  ActiveRecord::Base.establish_connection(database_url)
 
 
 
@@ -41,7 +41,7 @@ CITY_NAMES = ['Tala', 'Nguluni', 'Kathithyamaa']
     employee.update(client_id: client.id)
     client.update(employee_id: employee.id)
 
-    # EmployeeClient.create(employee: employee, client: client)
+    EmployeeClient.create(employee: employee, client: client)
   end
   
 

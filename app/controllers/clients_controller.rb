@@ -3,7 +3,8 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients = Client.all
+    clients = Client.all
+    render json: clients, include: [:employees], status: :ok
   end
 
   # GET /clients/1 or /clients/1.json
