@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :employees
   resources :clients
+  resources :sessions
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
