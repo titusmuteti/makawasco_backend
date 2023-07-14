@@ -1,5 +1,4 @@
 class ClientsController < ApplicationController
-  # before_action :set_client, only: %i[ show edit update destroy ]
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
   # GET /clients or /clients.json
@@ -60,6 +59,6 @@ class ClientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.permit(:first_name, :last_name, :email, :phone_number, :password, :confirm_password, :employee_id)
+      params.require(:client).permit(:first_name, :last_name, :email, :phone_number, :password, :confirm_password, :employee_id)
     end
 end
