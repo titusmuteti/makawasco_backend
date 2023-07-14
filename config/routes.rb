@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get "/me", to: "clients#show"
 
   match "/signup", to: proc { [204, {}, []] }, via: :options
+  match "/login", to: proc { [204, {}, []] }, via: :options
 
 end
