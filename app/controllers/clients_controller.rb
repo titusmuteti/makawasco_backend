@@ -32,7 +32,7 @@ class ClientsController < ApplicationController
     client = Client.new(client_params)
       
     if client.save
-      # byebug
+      byebug
       session[:client_id] = client.id
       render json: client, status: :created
     else
