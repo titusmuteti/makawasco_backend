@@ -31,13 +31,11 @@ class ClientsController < ApplicationController
   def create
     client = Client.new(client_params)
       
-    if client.save
+    client.save
       # byebug
       session[:client_id] = client.id
       render json: client, status: :created
-    else
-      render json: { error: client.errors.full_messages }, status: :unprocessable_entity
-    end
+  
   end
 
 
