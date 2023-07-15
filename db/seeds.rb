@@ -66,6 +66,17 @@ CITY_NAMES = ['Tala', 'Nguluni', 'Kathithyamaa']
 #         client_id: client_id
 #     )
 #   end
-  
+
+#admin logins 
+admin_md = Admin.find_or_initialize_by(email: 'md@example.com')
+admin_md.password = 'password'
+admin_md.role = 'Managing Director'
+admin_md.save!
+
+admin_se = Admin.find_or_initialize_by(email: 'admin_se@example.com')
+admin_se.password = 'password'
+admin_se.role = 'Systems Engineer'
+admin_se.save!
+
 
 puts "✅ Done seeding!"
