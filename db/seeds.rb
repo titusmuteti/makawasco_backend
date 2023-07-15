@@ -46,20 +46,29 @@ CITY_NAMES = ['Tala', 'Nguluni', 'Kathithyamaa']
   
 
   
-
-100.times do
+  100.times do
+    Bill.create(
+      meter_no: Faker::Number.number(digits: 6).to_s,
+      date_read: Faker::Date.between(from: 1.year.ago, to: Date.today).strftime("%Y-%m-%d"),
+      previous_reading: Faker::Number.number(digits: 4).to_s,
+      current_reading: Faker::Number.number(digits: 4).to_s,
+      units_consumed: Faker::Number.number(digits: 3).to_s,
+      balance: Faker::Number.decimal(l_digits: 2, r_digits: 2).to_s,
+      date_paid: Faker::Date.between(from: 1.year.ago, to: Date.today).strftime("%Y-%m-%d"),
+      client_id: Faker::Number.between(from: 1, to: 1000)
+    )
+  end
+  
   Bill.create(
-    meter_no: Faker::Number.unique.number(digits: 6).to_s,
-    date_read: Faker::Date.between(from: 1.year.ago, to: Date.today).strftime("%Y-%m-%d"),
-    previous_reading: Faker::Number.number(digits: 4).to_s,
-    current_reading: Faker::Number.number(digits: 4).to_s,
-    units_consumed: Faker::Number.number(digits: 3).to_s,
-    balance: Faker::Number.decimal(l_digits: 2, r_digits: 2).to_s,
-    date_paid: Faker::Date.between(from: 1.year.ago, to: Date.today).strftime("%Y-%m-%d"),
-    client_id: Faker::Number.unique.between(from: 1, to: 1000)
+    meter_no: "1234523",
+    date_read: "2015",
+    previous_reading: "23",
+    current_reading: "34",
+    units_consumed: "9"
+    balance: "0",
+    date_paid: "2015",
+    client_id: 200
   )
-end
-
 
 #admin logins 
 
