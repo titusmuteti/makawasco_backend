@@ -69,12 +69,12 @@ CITY_NAMES = ['Tala', 'Nguluni', 'Kathithyamaa']
 
 #admin logins 
 admin_md = Admin.find_or_initialize_by(email: 'md@example.com')
-admin_md.password = 'password'
+admin_md.password = 'password123'
 admin_md.role = 'Managing Director'
 admin_md.save!
 
 admin_se = Admin.find_or_initialize_by(email: 'admin_se@example.com')
-admin_se.password = 'password'
+admin_se.password = 'password123'
 admin_se.role = 'Systems Engineer'
 admin_se.save!
 
