@@ -47,27 +47,22 @@ CITY_NAMES = ['Tala', 'Nguluni', 'Kathithyamaa']
 
   
 
-# 30.times do
-#     date_read = Faker::Date.backward(days: 14)
-#     previous_reading = Faker::Number.between(from: 15, to: 100) 
-#     current_reading = Faker::Number.between(from: 20, to: 200) 
-#     balance = Faker::Number.between(from: 5, to: 1000) 
-#     paid = Faker::Boolean.boolean 
-#     date_paid = Faker::Date.forward(days: 14)
-#     client_id = Faker::Number.between(from: 1, to: 20)
-  
-#     Bill.create(
-#         date_read: date_read,
-#         previous_reading: previous_reading,
-#         current_reading: current_reading,
-#         balance: balance,
-#         paid: paid,
-#         date_paid: date_paid,
-#         client_id: client_id
-#     )
-#   end
+100.times do
+  Bill.create(
+    meter_no: Faker::Number.unique.number(digits: 6).to_s,
+    date_read: Faker::Date.between(from: 1.year.ago, to: Date.today).strftime("%Y-%m-%d"),
+    previous_reading: Faker::Number.number(digits: 4).to_s,
+    current_reading: Faker::Number.number(digits: 4).to_s,
+    units_consumed: Faker::Number.number(digits: 3).to_s,
+    balance: Faker::Number.decimal(l_digits: 2, r_digits: 2).to_s,
+    date_paid: Faker::Date.between(from: 1.year.ago, to: Date.today).strftime("%Y-%m-%d"),
+    client_id: Faker::Number.unique.between(from: 1, to: 1000)
+  )
+end
+
 
 #admin logins 
+
 admin_md = Admin.find_or_initialize_by(email: 'md@example.com')
 admin_md.password = 'password123'
 admin_md.role = 'Managing Director'
