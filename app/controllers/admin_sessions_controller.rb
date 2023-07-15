@@ -1,4 +1,5 @@
-# app/controllers/admin_sessions_controller.rb
+require 'jwt'
+
 class AdminSessionsController < ApplicationController
   def create
     admin = Admin.find_by(email: params[:email])
