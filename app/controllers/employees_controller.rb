@@ -52,13 +52,11 @@ class EmployeesController < ApplicationController
 
   # DELETE /employees/1 or /employees/1.json
   def destroy
-    @employee.destroy
+    employee = Employee.find(params[:id])
+    employee.destroy
+    render json: {message: "employee deleted"}, status: :ok
+end
 
-    respond_to do |format|
-      format.html { redirect_to employees_url, notice: "Employee was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
