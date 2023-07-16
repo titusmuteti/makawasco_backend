@@ -16,7 +16,7 @@ clients = [
       phone_number: "724290512",
       password: "password123",
       confirm_password: "password123",
-      employee_id: 5
+      employee_id: 595
     },
     {
       first_name: "Susan",
@@ -25,7 +25,7 @@ clients = [
       phone_number: "252353676",
       password: "calmination@2",
       confirm_password: "calmination@2",
-      employee_id: 2
+      employee_id: 597
     },
     {
       first_name: "Lydia",
@@ -34,7 +34,7 @@ clients = [
       phone_number: "743929053",
       password: "password123",
       confirm_password: "password123",
-      employee_id: 5
+      employee_id: 595
     },
     {
       first_name: "Patrick",
@@ -43,7 +43,7 @@ clients = [
       phone_number: "776543345",
       password: "mutune123",
       confirm_password: "mutune123",
-      employee_id: 1
+      employee_id: 601
     },
     {
       first_name: "Esther",
@@ -52,7 +52,7 @@ clients = [
       phone_number: "723460934",
       password: "pendoesther",
       confirm_password: "pendoesther",
-      employee_id: 3
+      employee_id: 603
     },
     {
       first_name: "Claire",
@@ -61,7 +61,7 @@ clients = [
       phone_number: "723690512",
       password: "password123",
       confirm_password: "password123",
-      employee_id: 2
+      employee_id: 597
     },
     {
       first_name: "Mulu",
@@ -70,7 +70,7 @@ clients = [
       phone_number: "13132096",
       password: "calmination@2",
       confirm_password: "calmination@2",
-      employee_id: 2
+      employee_id: 597
     },
     {
       first_name: "Faith",
@@ -79,7 +79,7 @@ clients = [
       phone_number: "1234560797",
       password: "faith@2",
       confirm_password: "faith@2",
-      employee_id: 5
+      employee_id: 595
     },
     {
       first_name: "Makau",
@@ -88,7 +88,7 @@ clients = [
       phone_number: "2059830698",
       password: "mutumakne123",
       confirm_password: "mutumakne123",
-      employee_id: 4
+      employee_id: 599
     },
     {
       first_name: "John",
@@ -97,7 +97,7 @@ clients = [
       phone_number: "723460934",
       password: "johnclavin",
       confirm_password: "johnclavin",
-      employee_id: 1
+      employee_id: 601
     }
 ]
 Client.create(clients)
@@ -113,8 +113,8 @@ bills = [
     units_consumed: nil,
     balance: nil,
     date_paid: "2023-05-1",
-    client_id: 1,
-    employee_id: 5
+    client_id: 601,
+    employee_id: 595
   },
   {
     meter_no: "204580565",
@@ -124,8 +124,8 @@ bills = [
     units_consumed:nil,
     balance: nil,
     date_paid: "2023-05-12",
-    client_id: 5,
-    employee_id: 3
+    client_id: 605,
+    employee_id: 603
   },
   {
     meter_no: "204585409",
@@ -135,8 +135,8 @@ bills = [
     units_consumed: nil,
     balance: nil,
     date_paid: "2023-05-10",
-    client_id: 3,
-    employee_id: 2
+    client_id: 603,
+    employee_id: 597
   },
   {
     meter_no: "204580953",
@@ -146,8 +146,8 @@ bills = [
     units_consumed: nil,
     balance: nil,
     date_paid: "2023-05-1",
-    client_id: 2,
-    employee_id: 1
+    client_id: 602,
+    employee_id: 601
   },
   {
     meter_no: "204580569",
@@ -157,8 +157,8 @@ bills = [
     units_consumed: nil,
     balance: nil,
     date_paid: "2023-05-12",
-    client_id: 4,
-    employee_id: 2
+    client_id: 604,
+    employee_id: 597
   },
   {
     meter_no: "204580679",
@@ -168,8 +168,8 @@ bills = [
     units_consumed: nil,
     balance: nil,
     date_paid: "2023-05-8",
-    client_id: 6,
-    employee_id: 5
+    client_id: 606,
+    employee_id: 595
   },
   {
     meter_no: "204580658",
@@ -179,8 +179,8 @@ bills = [
     units_consumed: nil,
     balance: nil,
     date_paid: "2023-05-1",
-    client_id: 7,
-    employee_id: 3
+    client_id: 607,
+    employee_id: 603
   },
   {
     meter_no: "204580900",
@@ -190,8 +190,8 @@ bills = [
     units_consumed: nil,
     balance: nil,
     date_paid: "2023-05-10",
-    client_id: 8,
-    employee_id: 5
+    client_id: 608,
+    employee_id: 595
   },
   {
     meter_no: "204580902",
@@ -201,8 +201,8 @@ bills = [
     units_consumed: nil,
     balance: nil,
     date_paid: "2023-05-4",
-    client_id: 10,
-    employee_id: 4
+    client_id: 610,
+    employee_id: 599
   },
   {
     meter_no: "204580909",
@@ -212,8 +212,8 @@ bills = [
     units_consumed: nil,
     balance: nil,
     date_paid: "2023-05-10",
-    client_id: 9,
-    employee_id: 2
+    client_id: 609,
+    employee_id: 597
   }
 ]
 Bill.create(bills)
@@ -233,35 +233,35 @@ employees = [
       last_name: "muthasya",
       email: "kaloki@work.com",
       location: "Tala",
-      client_id: [3,8,10]
+      client_id: [603,608,610]
     },
     {
       first_name: "Martin",
       last_name: "Luke",
       email: "martin@work.com",
       location: "Nguluni",
-      client_id: 1
+      client_id: 601
     },
     {
       first_name: "Jessy",
       last_name: "Carlos",
       email: "jessy@work.com",
       location: "Kangundo",
-      client_id: [5,4]
+      client_id: [605,604]
     },
     {
       first_name: "Purity",
       last_name: "Marks",
       email: "purity@work.com",
       location: "Tala",
-      client_id: [3,9,10]
+      client_id: [603,609,610]
     },
     {
       first_name: "Clause",
       last_name: "Jopekins",
       email: "clause@work.com",
       location: "Tala",
-      client_id: [2,6,7]
+      client_id: [602,066,607]
     }
 ]
 Employee.create(employees)
