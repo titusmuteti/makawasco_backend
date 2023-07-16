@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :bills
+  resources :employee_clients
   resources :employees
   resources :clients
   resources :sessions
