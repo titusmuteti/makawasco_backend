@@ -42,15 +42,30 @@ class ClientsController < ApplicationController
 
 
   # DELETE /clients/1 or /clients/1.json
+
   def destroy
-    client = Client.find_by_id(params[:id])
-    if client
-      client.destroy
-      render json: { message: "Client deleted" }, status: :ok
-    else
-      render json: { error: "Client not found" }, status: :not_found
+    @client = Client.find(params[:id])
+    employee_clients = EmployeeClient.where(client_id: @client.id)
+
+    employee_clients.each do |employee_client|
+      employee_client.update(client_id: nil) # Remove the association
     end
+
+    # Destroy the client record
+    @client.destroy
+    render json: { message: "Client deleted" }, status: :ok
+        
   end
+
+  # def destroy
+  #   client = Client.find_by_id(params[:id])
+  #   if client
+  #     client.destroy
+  #     render json: { message: "Client deleted" }, status: :ok
+  #   else
+  #     render json: { error: "Client not found" }, status: :not_found
+  #   end
+  # end
 
   private
   def record_invalid
