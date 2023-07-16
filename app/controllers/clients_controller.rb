@@ -47,8 +47,10 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     employee_clients = EmployeeClient.where(client_id: @client.id)
 
-    employee_clients.each do |employee_client|
-      employee_client.update(client_id: nil) # Remove the association
+    if employee_clients.any?
+      employee_clients.each do |employee_client|
+        employee_client.update(client_id: nil)
+      end
     end
 
     # Destroy the client record
