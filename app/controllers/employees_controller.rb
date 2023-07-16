@@ -51,10 +51,12 @@ class EmployeesController < ApplicationController
   end
 
   # DELETE /employees/1 or /employees/1.json
-  def destroy
-    employee = Employee.find(params[:id])
-    employee.destroy
-    render json: {message: "employee deleted"}, status: :ok
+
+def destroy
+  employee = Employee.find(params[:id])
+  EmployeeClient.where(employee_id: employee.id).delete_all
+  employee.destroy
+  
 end
 
 
