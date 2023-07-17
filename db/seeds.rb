@@ -14,8 +14,8 @@ bills = [
     date_read: "2023-04-23",
     previous_reading: "200",
     current_reading: "500",
-    units_consumed: nil,
-    balance: 500,
+    units_consumed: "0",
+    balance: "500",
     date_paid: "2023-05-1",
     client_id: 601,
     employee_id: 595
@@ -25,8 +25,8 @@ bills = [
     date_read: "2023-04-22",
     previous_reading: "045",
     current_reading: "055",
-    units_consumed: nil,
-    balance: 0,
+    units_consumed: "0",
+    balance: "0",
     date_paid: "2023-05-12",
     client_id: 605,
     employee_id: 603
@@ -36,19 +36,19 @@ bills = [
     date_read: "2023-04-23",
     previous_reading: "3490",
     current_reading: "3500",
-    units_consumed: nil,
-    balance: 100,
+    units_consumed: "0",
+    balance: "100",
     date_paid: "2023-05-10",
     client_id: 603,
-    employee_id: 597
+    employee_id: 597,
   },
   {
     meter_no: "204580953",
     date_read: "2023-04-22",
     previous_reading: "223",
     current_reading: "354",
-    units_consumed: nil,
-    balance: 0,
+    units_consumed: "0",
+    balance: "0",
     date_paid: "2023-05-1",
     client_id: 602,
     employee_id: 601
@@ -58,8 +58,8 @@ bills = [
     date_read: "2023-04-23",
     previous_reading: "234",
     current_reading: "300",
-    units_consumed: nil,
-    balance: 0,
+    units_consumed: "0",
+    balance: "0",
     date_paid: "2023-05-12",
     client_id: 604,
     employee_id: 597
@@ -69,8 +69,8 @@ bills = [
     date_read: "2023-04-23",
     previous_reading: "23",
     current_reading: "55",
-    units_consumed: nil,
-    balance: 5,
+    units_consumed: "0",
+    balance: "5",
     date_paid: "2023-05-8",
     client_id: 606,
     employee_id: 595
@@ -80,8 +80,8 @@ bills = [
     date_read: "2023-04-23",
     previous_reading: "2023",
     current_reading: "2024",
-    units_consumed: nil,
-    balance: 0,
+    units_consumed: "0",
+    balance: "0",
     date_paid: "2023-05-1",
     client_id: 607,
     employee_id: 603
@@ -91,8 +91,8 @@ bills = [
     date_read: "2023-04-23",
     previous_reading: "223",
     current_reading: "229",
-    units_consumed: nil,
-    balance: 1000,
+    units_consumed: "0",
+    balance: "1000",
     date_paid: "2023-05-10",
     client_id: 608,
     employee_id: 595
@@ -102,8 +102,8 @@ bills = [
     date_read: "2023-04-23",
     previous_reading: "241",
     current_reading: "355",
-    units_consumed: nil,
-    balance: 200,
+    units_consumed: "0",
+    balance: "200",
     date_paid: "2023-05-4",
     client_id: 610,
     employee_id: 599
@@ -113,8 +113,8 @@ bills = [
     date_read: "2023-04-23",
     previous_reading: "9876",
     current_reading: "9890",
-    units_consumed: nil,
-    balance: 0,
+    units_consumed: "0",
+    balance: "0",
     date_paid: "2023-05-10",
     client_id: 609,
     employee_id: 597
@@ -288,7 +288,12 @@ end
 
 # Create bills
 bills.each do |bill_attributes|
-  Bill.create(bill_attributes)
+  bill = Bill.new(bill_attributes)
+  bill.units_consumed = bill_attributes[:units_consumed].to_i unless bill_attributes[:units_consumed].nil?
+  bill.balance = bill_attributes[:balance].to_i unless bill_attributes[:balance].nil?
+  bill.save
 end
+
+
 
 puts "✅ Done seeding!"
