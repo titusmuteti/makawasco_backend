@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_16_130844) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_17_134726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,8 +27,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_16_130844) do
     t.string "date_read"
     t.string "previous_reading"
     t.string "current_reading"
-    t.string "units_consumed"
-    t.string "balance"
+    t.integer "units_consumed"
+    t.integer "balance"
     t.string "date_paid"
     t.integer "client_id"
     t.datetime "created_at", null: false
