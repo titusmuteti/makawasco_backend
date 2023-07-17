@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
     has_secure_password
 
+    has_many :bills, dependent: :destroy
     has_many :employee_clients, dependent: :destroy
     has_many :employees, through: :employee_clients, dependent: :destroy
   

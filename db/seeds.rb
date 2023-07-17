@@ -252,6 +252,41 @@ employees = [
   }
 ]
 
+employee_clients = [
+  {
+    employee_id: 595,
+    client_id: 601
+  },
+  {
+    employee_id: 603,
+    client_id: 605
+  },
+  {
+    employee_id: 597,
+    client_id: 604
+  },
+  {
+    employee_id: 595,
+    client_id: 603
+  },
+  {
+    employee_id: 597,
+    client_id: 606
+  },
+  {
+    employee_id: 595,
+    client_id: 608
+  },
+  {
+    employee_id: 599,
+    client_id: 610
+  },
+  {
+    employee_id: 597,
+    client_id: 609
+  }
+]
+
 # Create clients
 clients.each do |client_attributes|
   client = Client.create(client_attributes)
@@ -263,6 +298,11 @@ employees.each do |employee_attributes|
   employee.client_ids.each do |client_id|
     employee.clients << Client.find(client_id)
   end
+end
+
+# Create employee_clients associations
+employee_clients.each do |ec_attributes|
+  EmployeeClient.create(ec_attributes)
 end
 
 # Create bills
