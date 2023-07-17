@@ -145,7 +145,7 @@ clients = [
     phone_number: "252353676",
     password: "calmination@2",
     confirm_password: "calmination@2",
-    employee_id: 603
+    employee_id: 596
   },
   {
     first_name: "Lydia",
@@ -163,7 +163,7 @@ clients = [
     phone_number: "776543345",
     password: "mutune123",
     confirm_password: "mutune123",
-    employee_id: 601
+    employee_id: 597
   },
   {
     first_name: "Esther",
@@ -172,7 +172,7 @@ clients = [
     phone_number: "723460934",
     password: "pendoesther",
     confirm_password: "pendoesther",
-    employee_id: 601
+    employee_id: 597
   },
   {
     first_name: "Claire",
@@ -181,7 +181,7 @@ clients = [
     phone_number: "723690512",
     password: "password123",
     confirm_password: "password123",
-    employee_id: 597
+    employee_id: 598
   },
   {
     first_name: "Mulu",
@@ -227,7 +227,7 @@ employees = [
     last_name: "Muthasya",
     email: "kaloki@work.com",
     location: "Tala",
-    client_ids: [[601, 603, 608]]
+    client_ids: [601, 603, 608]
   },
   {
     first_name: "Martin",
@@ -248,27 +248,28 @@ employees = [
     last_name: "Marks",
     email: "purity@work.com",
     location: "Tala",
-    client_ids: [602]
+    client_ids: [602, 610]
   },
   {
     first_name: "Clause",
     last_name: "Jopekins",
     email: "clause@work.com",
     location: "Tala",
-    client_ids: [610]
+    client_ids: []
   }
 ]
 
 employee_clients = [
   { employee_id: 595, client_id: 601 },
-  { employee_id: 603, client_id: 605 },
-  { employee_id: 603, client_id: 607 },
+  { employee_id: 596, client_id: 605 },
+  { employee_id: 596, client_id: 607 },
   { employee_id: 597, client_id: 604 },
   { employee_id: 595, client_id: 603 },
   { employee_id: 597, client_id: 606 },
   { employee_id: 595, client_id: 608 },
   { employee_id: 599, client_id: 610 },
   { employee_id: 597, client_id: 609 },
+  { employee_id: 598, client_id: 602 }
 ]
 
 
@@ -287,7 +288,9 @@ end
 
 # Create employee_clients associations
 employee_clients.each do |ec_attributes|
-  EmployeeClient.create(ec_attributes)
+  employee = Employee.find(ec_attributes[:employee_id])
+  client = Client.find(ec_attributes[:client_id])
+  employee.clients << client
 end
 
 # Create bills
