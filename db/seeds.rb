@@ -121,6 +121,13 @@ bills = [
   }
 ]
 
+bills.each do |bill|
+  previous_reading = bill[:previous_reading].to_i
+  current_reading = bill[:current_reading].to_i
+  units_consumed = current_reading - previous_reading
+  bill[:units_consumed] = units_consumed.to_s
+end
+
 clients = [
   {
     first_name: "Mark",
@@ -138,7 +145,7 @@ clients = [
     phone_number: "252353676",
     password: "calmination@2",
     confirm_password: "calmination@2",
-    employee_id: 597
+    employee_id: 603
   },
   {
     first_name: "Lydia",
@@ -165,7 +172,7 @@ clients = [
     phone_number: "723460934",
     password: "pendoesther",
     confirm_password: "pendoesther",
-    employee_id: 603
+    employee_id: 601
   },
   {
     first_name: "Claire",
@@ -210,7 +217,7 @@ clients = [
     phone_number: "723460934",
     password: "johnclavin",
     confirm_password: "johnclavin",
-    employee_id: 601
+    employee_id: 597
   }
 ]
 
@@ -220,72 +227,50 @@ employees = [
     last_name: "Muthasya",
     email: "kaloki@work.com",
     location: "Tala",
-    client_ids: [603, 608, 610]
+    client_ids: [[601, 603, 608]]
   },
   {
     first_name: "Martin",
     last_name: "Luke",
     email: "martin@work.com",
     location: "Nguluni",
-    client_ids: [601]
+    client_ids: [605, 607]
   },
   {
     first_name: "Jessy",
     last_name: "Carlos",
     email: "jessy@work.com",
     location: "Kangundo",
-    client_ids: [605, 604]
+    client_ids: [604, 606, 609]
   },
   {
     first_name: "Purity",
     last_name: "Marks",
     email: "purity@work.com",
     location: "Tala",
-    client_ids: [603, 609, 610]
+    client_ids: [602]
   },
   {
     first_name: "Clause",
     last_name: "Jopekins",
     email: "clause@work.com",
     location: "Tala",
-    client_ids: [602, 606, 607]
+    client_ids: [610]
   }
 ]
 
 employee_clients = [
-  {
-    employee_id: 595,
-    client_id: 601
-  },
-  {
-    employee_id: 603,
-    client_id: 605
-  },
-  {
-    employee_id: 597,
-    client_id: 604
-  },
-  {
-    employee_id: 595,
-    client_id: 603
-  },
-  {
-    employee_id: 597,
-    client_id: 606
-  },
-  {
-    employee_id: 595,
-    client_id: 608
-  },
-  {
-    employee_id: 599,
-    client_id: 610
-  },
-  {
-    employee_id: 597,
-    client_id: 609
-  }
+  { employee_id: 595, client_id: 601 },
+  { employee_id: 603, client_id: 605 },
+  { employee_id: 603, client_id: 607 },
+  { employee_id: 597, client_id: 604 },
+  { employee_id: 595, client_id: 603 },
+  { employee_id: 597, client_id: 606 },
+  { employee_id: 595, client_id: 608 },
+  { employee_id: 599, client_id: 610 },
+  { employee_id: 597, client_id: 609 },
 ]
+
 
 # Create clients
 clients.each do |client_attributes|
