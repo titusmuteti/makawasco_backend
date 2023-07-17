@@ -257,17 +257,17 @@ clients.each do |client_attributes|
   client = Client.create(client_attributes)
 end
 
-# Create bills
-bills.each do |bill_attributes|
-  Bill.create(bill_attributes)
-end
-
 # Create employees
 employees.each do |employee_attributes|
   employee = Employee.create(employee_attributes)
   employee.client_ids.each do |client_id|
     employee.clients << Client.find(client_id)
   end
+end
+
+# Create bills
+bills.each do |bill_attributes|
+  Bill.create(bill_attributes)
 end
 
 puts "✅ Done seeding!"
